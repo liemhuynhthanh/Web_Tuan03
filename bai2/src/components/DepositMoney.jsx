@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./DepositMoney.css";
+
 
 export default function DepositMoney() {
   const [amount, setAmount] = useState("");

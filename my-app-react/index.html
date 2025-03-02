@@ -1,185 +1,355 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Recipe Search</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cheffy - No Results</title>
   <style>
-    
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        background: #fdfdfd;
-        color: #333;
-      }
-  
-      .container {
-        width: 100%;
-        max-width: 1200px;
-        margin: 0 auto;
-        
-        
-      }
-  
-      header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background: white;
-        padding: 10px 20px;
-        border:solid 1px gray;
-      }
-  
-      .logo {
-        font-size: 24px;
-        font-weight: bold;
-        color: #ff4081;
-      }
-  
-      nav a {
-        margin: 0 10px;
-        text-decoration: none;
-        color: #333;
-      }
-  
-      .recipe-box {
-        background: #ff4081;
-        color: #fff;
-        border: none;
-        padding: 8px 16px;
-        border-radius: 20px;
-        cursor: pointer;
-      }
-  
-      .content {
-        display: flex;
-        margin-top: 1px;
-        border: solid 1px gray;
-      }
-  
-      .filters {
-        width: 25%;
-        background: #fff;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      }
-  
-      .filter-group {
-        margin-bottom: 20px;
-      }
-  
-      h4 {
-        margin-bottom: 10px;
-      }
-  
-      .apply-btn {
-        background: #ff4081;
-        color: #fff;
-        border: none;
-        padding: 8px 16px;
-        border-radius: 8px;
-        cursor: pointer;
-      }
-  
-      .results {
-        width: 75%;
-        text-align: center;
-      }
-  
-      .no-results-icon {
-        font-size: 48px;
-        color: #ff4081;
-      }
-  
-      .suggestions span {
-        background: #ffe4ec;
-        color: #ff4081;
-        padding: 5px 10px;
-        margin: 5px;
-        border-radius: 20px;
-        display: inline-block;
-      }
-      #searchInput {
-        width: 300px;
-        padding: 10px;
-        border-radius: 8px;
-        border: 1px solid #ff4081;
-        margin: 20px 0;
-      }
-    </style>
-  
+    /* RESET & FONT */
+    * {
+      margin: 0; 
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      background-color: #f9f9fb; /* nền trang nhạt */
+      color: #333;
+    }
+    a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    /* CONTAINER CHUNG */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* HEADER */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #fff;
+      padding: 10px 20px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #ff4081;
+    }
+    .search-input {
+      width: 250px;
+      padding: 8px 12px;
+      border: 1px solid #ff4081;
+      border-radius: 8px;
+    }
+    nav a {
+      margin: 0 10px;
+      font-size: 14px;
+      color: #333;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .recipe-box {
+      background-color: #ff4081;
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .icon-btn {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 50%;
+      width: 40px; 
+      height: 40px;
+      cursor: pointer;
+    }
+    .icon-btn img {
+      width: 24px;
+      height: 24px;
+      margin-top: 7px;
+    }
+
+    /* MAIN CONTENT */
+    .content {
+      display: flex;
+      margin-top: 20px;
+      padding: 0 20px;
+      gap: 20px;
+    }
+    /* ASIDE - FILTERS */
+    .filters {
+      flex: 0 0 250px;
+      background-color: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 20px;
+      height: fit-content;
+    }
+    .filters h3 {
+      margin-bottom: 15px;
+      font-size: 16px;
+      color: #333;
+    }
+    .filter-group {
+      margin-bottom: 20px;
+    }
+    .filter-group h4 {
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+    .filter-group label {
+      font-size: 14px;
+      display: block;
+      margin: 5px 0;
+    }
+    .filter-group input[type="range"] {
+      width: 100%;
+      margin: 10px 0;
+    }
+    .apply-btn {
+      background-color: #ff4081;
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .apply-btn:hover {
+      background-color: #e6006d;
+    }
+
+    /* MAIN - RESULTS */
+    .results {
+      flex: 1;
+      background-color: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+    }
+    .results h2 {
+      margin-bottom: 10px;
+      font-size: 18px;
+      color: #333;
+    }
+    .no-results-icon img {
+      width: 120px;
+      height: auto;
+      margin: 20px 0;
+    }
+    .results p {
+      margin-bottom: 10px;
+    }
+    .suggestions {
+      margin-top: 10px;
+    }
+    .suggestions span {
+      display: inline-block;
+      background-color: #ffe4ec;
+      color: #ff4081;
+      padding: 6px 12px;
+      margin: 5px;
+      border-radius: 20px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: #13161a;
+      color: #fff;
+      margin-top: 40px;
+      padding: 40px 10%;
+    }
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    .footer-column {
+      flex: 1;
+      min-width: 200px;
+      margin-bottom: 20px;
+    }
+    .footer-column h3 {
+      font-size: 16px;
+      margin-bottom: 15px;
+      color: #fff;
+    }
+    .footer-column p {
+      font-size: 14px;
+      color: #ccc;
+      line-height: 1.6;
+    }
+    .footer-column ul {
+      list-style: none;
+    }
+    .footer-column ul li {
+      margin-bottom: 8px;
+    }
+    .footer-column ul li a {
+      color: #fff;
+      font-size: 14px;
+    }
+    .footer-column ul li a:hover {
+      text-decoration: underline;
+    }
+    /* Form subscribe */
+    .subscribe {
+      display: flex;
+      gap: 5px;
+      margin-top: 10px;
+    }
+    .subscribe input {
+      flex: 1;
+      padding: 8px;
+      border: none;
+      border-radius: 3px;
+      outline: none;
+    }
+    .subscribe button {
+      background-color: #ff4081;
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .subscribe button:hover {
+      background-color: #e6006d;
+    }
+
+    /* FOOTER BOTTOM */
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #333;
+    }
+    .footer-brand span {
+      font-weight: bold;
+      font-size: 16px;
+      color: #fff;
+    }
+    .footer-brand p {
+      font-size: 14px;
+      margin: 5px 0;
+      color: #ccc;
+    }
+    .footer-brand a {
+      color: #ff4081;
+      text-decoration: none;
+      font-size: 14px;
+      margin: 0 5px;
+    }
+    .footer-brand a:hover {
+      text-decoration: underline;
+    }
+    .footer-credit p {
+      font-size: 14px;
+      color: #ccc;
+    }
+  </style>
 </head>
 <body>
-  <div id="root"></div>
+
   <div class="container">
+    <!-- HEADER -->
     <header>
-      <div class="logo">Chefify</div>
-      <input type="text" placeholder="Search recipes..." id="searchInput">
+      <div class="header-left">
+        <div class="logo">Cheffy</div>
+        <input 
+          type="text" 
+          class="search-input" 
+          placeholder="Search recipes..." 
+          id="searchInput"
+        />
+      </div>
       <nav>
-        <a href="#">What to cook</a>
+        <a href="#">What to Cook</a>
         <a href="#">Recipes</a>
         <a href="#">Ingredients</a>
         <a href="#">Occasions</a>
         <a href="#">About Us</a>
       </nav>
-      <button class="recipe-box">Your Recipe Box</button>
-      <button style="border-radius: 22px;"><img src="./public/vite.svg" alt="" srcset=""></button>
+      <div class="header-right">
+        <button class="recipe-box">Your Recipe Box</button>
+        <button class="icon-btn">
+          <img src="./public/vite.svg" alt="icon" />
+        </button>
+      </div>
     </header>
 
+    <!-- CONTENT -->
     <div class="content">
+      <!-- FILTERS -->
       <aside class="filters">
         <h3>Filters</h3>
+
         <div class="filter-group">
           <h4>Type</h4>
           
-         <div style="float: left;">
-          <label><input type="checkbox"> Pan-fried</label>
-          <br>
-          <label><input type="checkbox" checked> Grilled</label>
-          <br>
-          <label><input type="checkbox"> Sauteed</label>
-          <br>
-          <label><input type="checkbox"> Steamed</label>
-          <br>
-         </div>
-         <div style="float: right;">
-          <label><input type="checkbox"> Stir-tried</label>
-          <br>
-          <label><input type="checkbox" checked> Roasted</label>
-          <br>
-          <label><input type="checkbox">Baked </label>
-          <br>
-          <label><input type="checkbox">Stewed </label>
-         </div>
-         
+          <div style="float: left;">
+            <label><input type="checkbox" /> Pan-fried</label>
+          <label><input type="checkbox" checked/> Grilled</label>
+          <label><input type="checkbox" /> Stir-fried</label>
+          <label><input type="checkbox" checked/> Roasted</label>
+
+          </div>
+          <div style="float: right;">
+            <label><input type="checkbox" /> Baked</label>
+          <label><input type="checkbox" /> Steamed</label>
+          <label><input type="checkbox" /> Stewed</label>
+          <label><input type="checkbox" /> Stewed</label>
+          </div>
+          
         </div>
 
-        <div class="filter-group" style="margin: 100px 0;">
+        <div class="filter-group">
           <h4>Time</h4>
-          <input type="range" min="0" max="60" value="30">
-          <input type="range" min="0" max="60" value="50">
+          <input type="range" min="0" max="60" value="30"/>
+          <input type="range" min="0" max="60" value="50"/>
         </div>
 
         <div class="filter-group">
           <h4>Rating</h4>
-          <label><input type="checkbox"> ⭐⭐⭐⭐⭐</label>
-          <br>
-          <label><input type="checkbox"> ⭐⭐⭐☆</label>
-          <br>
-          <label><input type="checkbox" checked> ⭐⭐⭐☆☆</label>
-          <br>
-          <label><input type="checkbox" checked> ⭐⭐☆☆☆</label>
+          <label><input type="checkbox" /> ⭐⭐⭐⭐⭐</label>
+          <label><input type="checkbox" /> ⭐⭐⭐☆</label>
+          <label><input type="checkbox" checked/> ⭐⭐⭐☆☆</label>
+          <label><input type="checkbox" checked/> ⭐⭐☆☆☆</label>
         </div>
+
         <button class="apply-btn">Apply</button>
       </aside>
 
+      <!-- RESULTS -->
       <main class="results">
         <h2>Sorry, no results were found for "cakescascsa"</h2>
-        <div class="no-results-icon"><img src="./public/anh1.png" alt="" srcset=""></div>
+        <div class="no-results-icon">
+          <img src="./public/anh1.png" alt="No results"/>
+        </div>
         <p>We have all your Independence Day sweets covered.</p>
         <div class="suggestions">
           <span>Sweet Cake</span>
@@ -189,7 +359,76 @@
         </div>
       </main>
     </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <!-- 4 CỘT -->
+      <div class="footer-container">
+        <!-- ABOUT US -->
+        <div class="footer-column">
+          <h3>About Us</h3>
+          <p>
+            Welcome to our website, a wonderful place to explore
+            and learn how to cook like a pro.
+          </p>
+          <div class="subscribe">
+            <input 
+              type="email" 
+              placeholder="Enter your email" 
+              required 
+            />
+            <button type="submit">Send</button>
+          </div>
+        </div>
+
+        <!-- LEARN MORE -->
+        <div class="footer-column">
+          <h3>Learn More</h3>
+          <ul>
+            <li><a href="#">Our Cooks</a></li>
+            <li><a href="#">See Our Features</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+
+        <!-- RECIPES -->
+        <div class="footer-column">
+          <h3>Recipes</h3>
+          <ul>
+            <li><a href="#">What to Cook This Week</a></li>
+            <li><a href="#">Pasta</a></li>
+            <li><a href="#">Dinner</a></li>
+            <li><a href="#">Healthy</a></li>
+            <li><a href="#">Vegetarian</a></li>
+            <li><a href="#">Vegan</a></li>
+            <li><a href="#">Christmas</a></li>
+          </ul>
+        </div>
+
+        <!-- SHOP -->
+        <div class="footer-column">
+          <h3>Shop</h3>
+          <ul>
+            <li><a href="#">Gift Subscription</a></li>
+            <li><a href="#">Send us Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- FOOTER BOTTOM -->
+      <div class="footer-bottom">
+        <div class="footer-brand">
+          <span>Cheffy</span>
+          <p>© 2020 Cheffy Company</p>
+          <a href="#">Terms of Service</a> | 
+          <a href="#">Privacy Policy</a>
+        </div>
+        <div class="footer-credit">
+          <p>Made with Vsilly</p>
+        </div>
+      </div>
+    </footer>
   </div>
-  <script src="script.js"></script>
+
 </body>
 </html>
